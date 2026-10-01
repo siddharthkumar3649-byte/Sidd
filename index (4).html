@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>For My Dii ❤️</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    width:100%;
+    height:100vh;
+    overflow:hidden;
+    font-family:Arial,sans-serif;
+    background:linear-gradient(135deg,#ffb6d5,#ffdff0,#d9c2ff);
+}
+
+/* PAGE */
+
+.page{
+    display:none;
+    width:100%;
+    height:100vh;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+}
+
+.page.show{
+    display:flex;
+}
+
+/* CARD */
+
+.card{
+    width:100%;
+    max-width:380px;
+    padding:35px 22px;
+    text-align:center;
+    border-radius:30px;
+    background:white;
+    box-shadow:0 15px 40px rgba(0,0,0,0.15);
+    animation:zoom 0.6s ease;
+}
+
+.emoji{
+    font-size:65px;
+    animation:bounce 1.5s infinite;
+}
+
+h1{
+    color:#e83e8c;
+    font-size:30px;
+    margin:15px 0;
+}
+
+h2{
+    color:#b04ca0;
+}
+
+p{
+    color:#555;
+    font-size:18px;
+    line-height:1.6;
+}
+
+.pink{
+    color:#e83e8c;
+    font-weight:bold;
+}
+
+/* BUTTON */
+
+button{
+    margin-top:20px;
+    padding:14px 28px;
+    border:0;
+    border-radius:30px;
+    background:#e83e8c;
+    color:white;
+    font-size:17px;
+    font-weight:bold;
+}
+
+/* HEARTS */
+
+.heart{
+    position:fixed;
+    bottom:-30px;
+    font-size:25px;
+    animation:up 4s linear forwards;
+    pointer-events:none;
+}
+
+/* ANIMATION */
+
+@keyframes zoom{
+
+    from{
+        opacity:0;
+        transform:scale(.7);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+
+}
+
+@keyframes bounce{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-10px);
+    }
+
+}
+
+@keyframes up{
+
+    from{
+        transform:translateY(0) rotate(0);
+        opacity:1;
+    }
+
+    to{
+        transform:translateY(-110vh) rotate(360deg);
+        opacity:0;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- PAGE 1 -->
+
+<div class="page show" id="page1">
+
+<div class="card">
+
+<div class="emoji">👩‍❤️‍👨</div>
+
+<h1>For My Beautiful Dii ❤️</h1>
+
+<p>
+Dii, you are not just my sister...
+<br><br>
+You are one of the most
+<span class="pink">special people</span>
+in my life. 🥰
+</p>
+
+<button onclick="next(2)">
+Tap to Next 💕
+</button>
+
+</div>
+
+</div>
+
+
+<!-- PAGE 2 -->
+
+<div class="page" id="page2">
+
+<div class="card">
+
+<div class="emoji">🌸</div>
+
+<h1>My Lovely Dii 🥰</h1>
+
+<p>
+Kabhi friend,
+kabhi teacher,
+aur kabhi
+<span class="pink">second mom</span>. ❤️
+<br><br>
+Thank you for always being there. 🫶
+</p>
+
+<button onclick="next(3)">
+Next Page 🌷
+</button>
+
+</div>
+
+</div>
+
+
+<!-- PAGE 3 -->
+
+<div class="page" id="page3">
+
+<div class="card">
+
+<div class="emoji">🫶</div>
+
+<h1>Thank You Dii ❤️</h1>
+
+<p>
+Thank you meri choti-choti
+mistakes ko maaf karne ke liye. 🥹
+<br><br>
+You will always have a
+<span class="pink">special place</span>
+in my heart. 💗
+</p>
+
+<button onclick="next(4)">
+One Last Page ✨
+</button>
+
+</div>
+
+</div>
+
+
+<!-- PAGE 4 -->
+
+<div class="page" id="page4">
+
+<div class="card">
+
+<div class="emoji">👑</div>
+
+<h1>Best Dii Ever ❤️</h1>
+
+<h2>Love You Dii 🥰</h2>
+
+<p>
+Chahe kuch bhi ho,
+hamesha aise hi mere saath rehna. 🤗
+<br><br>
+You are truly
+<span class="pink">precious to me. 💖</span>
+</p>
+
+<button onclick="next(1)">
+Start Again 🔄
+</button>
+
+</div>
+
+</div>
+
+
+<script>
+
+/* NEXT PAGE */
+
+function next(number){
+
+    document.getElementById("page1")
+    .classList.remove("show");
+
+    document.getElementById("page2")
+    .classList.remove("show");
+
+    document.getElementById("page3")
+    .classList.remove("show");
+
+    document.getElementById("page4")
+    .classList.remove("show");
+
+    document.getElementById("page"+number)
+    .classList.add("show");
+
+    hearts();
+
+}
+
+
+/* HEART ANIMATION */
+
+function hearts(){
+
+    for(var i=0;i<10;i++){
+
+        var h=document.createElement("div");
+
+        h.className="heart";
+
+        var list=[
+            "❤️",
+            "💕",
+            "💗",
+            "💖",
+            "🌸",
+            "✨"
+        ];
+
+        h.innerHTML=
+        list[Math.floor(Math.random()*list.length)];
+
+        h.style.left=
+        Math.random()*100+"%";
+
+        h.style.animationDuration=
+        (3+Math.random()*2)+"s";
+
+        document.body.appendChild(h);
+
+        setTimeout(function(){
+
+            h.remove();
+
+        },5000);
+
+    }
+
+}
+
+/* START HEARTS */
+
+hearts();
+
+</script>
+
+</body>
+</html>
